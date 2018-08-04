@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addGun, removeGun, addGunSync } from './reducer';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
-    const store = this.props.store;
-    const addGun = this.props.addGun;
-    const removeGun = this.props.removeGun;
-    const addGunSync = this.props.addGunSync;
     return (
       <div className="App">
         <header className="App-header">
@@ -18,14 +16,27 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <p className="App-intro">
-          现在有枪{ store.getState() }把
+          现在有枪{ this.props.num }把
         </p>
-        <button onClick={ () => store.dispatch(addGun()) }>加一把</button>
-        <button onClick={ () => store.dispatch(removeGun()) }>减一把</button>
-        <button onClick={ () => store.dispatch(addGunSync()) }>明天给一把</button>
+        <button onClick={ this.props.addGun }>加一把</button>
+        <button onClick={ this.props.removeGun }>减一把</button>
+        <button onClick={ this.props.addGunSync }>明天给一把</button>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { num: state };
+};
+
+const actionCreators = { addGun, removeGun, addGunSync };
+
+/**
+ * connect函数接受四个参数，前2个最重要, 都是对象
+ * 第一个mapStateToProps，用来把state挂到props上，
+ * 第二个actionCreators，用来把action挂到props上
+ */
+App = connect(mapStateToProps, actionCreators)(App);
 
 export default App;

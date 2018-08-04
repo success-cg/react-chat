@@ -2,12 +2,13 @@ import React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 import App from './App.js';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import './App.css';
 
-import { reducer, addGun, removeGun, addGunSync } from './reducer.js';
+import { reducer } from './reducer.js';
 
 const store = createStore(reducer, compose(
   applyMiddleware(thunk),
@@ -16,11 +17,9 @@ const store = createStore(reducer, compose(
 
 function render() {
   ReactDOM.render(
-    <App store={ store }
-         addGun={ addGun }
-         removeGun={ removeGun }
-         addGunSync={ addGunSync }
-    />,
+    <Provider store={ store }>
+      <App/>
+    </Provider>,
     document.getElementById('root'));
 }
 
