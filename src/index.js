@@ -15,15 +15,10 @@ const store = createStore(reducer, compose(
   window.devToolsExtension ? window.devToolsExtension() : () => {}
 ));
 
-function render() {
-  ReactDOM.render(
-    <Provider store={ store }>
-      <App/>
-    </Provider>,
-    document.getElementById('root'));
-}
-
-render();
-store.subscribe(render);
+ReactDOM.render(
+  <Provider store={ store }>
+    <App/>
+  </Provider>,
+  document.getElementById('root'));
 
 registerServiceWorker();
