@@ -4,6 +4,18 @@ import { addGun, removeGun, addGunSync } from './reducer';
 import logo from './logo.svg';
 import './App.css';
 
+/**
+ *  用装饰器的方法写connect函数，需要安装babel-plugin-transform-decorators-legacy，
+ *  在package.json的babel字段中配置
+ *  接受2个参数，
+ +  第一个用来把state挂到props上，是一个函数返回对象
+ +  第二个用来把action挂到props上，是一个对象
+ */
+@connect(
+  (state) => ({ num: state }),
+  { addGun, removeGun, addGunSync }
+)
+
 class App extends Component {
   render() {
     return (
@@ -25,18 +37,5 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return { num: state };
-};
-
-const actionCreators = { addGun, removeGun, addGunSync };
-
-/**
- * connect函数接受四个参数，前2个最重要, 都是对象
- * 第一个mapStateToProps，用来把state挂到props上，
- * 第二个actionCreators，用来把action挂到props上
- */
-App = connect(mapStateToProps, actionCreators)(App);
 
 export default App;
