@@ -8,6 +8,8 @@ import App from './App.js';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import './App.css';
+import './config.js';
+import 'antd-mobile/dist/antd-mobile.css'
 
 import { reducer } from './reducer.js';
 

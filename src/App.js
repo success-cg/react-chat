@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGun, removeGun, addGunSync } from './reducer';
+import { addGun, removeGun, addGunSync, getUser } from './reducer';
+import { Button } from 'antd-mobile'
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,8 +13,8 @@ import './App.css';
  +  第二个用来把action挂到props上，是一个对象
  */
 @connect(
-  (state) => ({ num: state }),
-  { addGun, removeGun, addGunSync }
+  (state) => (state),
+  { addGun, removeGun, addGunSync, getUser }
 )
 
 class App extends Component {
@@ -28,11 +29,15 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <p className="App-intro">
-          现在有枪{ this.props.num }把
+          现在有枪{ this.props.gun }把
         </p>
-        <button onClick={ this.props.addGun }>加一把</button>
-        <button onClick={ this.props.removeGun }>减一把</button>
-        <button onClick={ this.props.addGunSync }>明天给一把</button>
+        <h1 className="App-title">我的名字是 { this.props.name }</h1>
+        <h1 className="App-title">我的年龄 { this.props.age }</h1>
+
+        <Button type="primary" inline={ true } onClick={ this.props.addGun }>加一把</Button>
+        <Button type="primary" inline={ true } onClick={ this.props.removeGun }>减一把</Button>
+        <Button type="primary" inline={ true } onClick={ this.props.addGunSync }>明天给一把</Button>
+        <Button type="primary" inline={ true } onClick={ this.props.getUser }>getUser</Button>
       </div>
     );
   }

@@ -16,7 +16,7 @@ const User = mongoose.model('user', new mongoose.Schema({
 }));
 
 /*创建数据*/
-// User.create({ name: 'cg', age: 18 }, (err, doc) => {
+// User.create({ name: 'ly', age: 18 }, (err, doc) => {
 //   if (err) return console.error(err);
 //   else console.log(doc);
 // });
