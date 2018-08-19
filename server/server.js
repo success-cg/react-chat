@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+
 const app = new express();
 const PORT = 9093;
 const DB_url = 'mongodb://127.0.0.1:27017/talk';

@@ -10,7 +10,7 @@ import './App.css';
  *  在package.json的babel字段中配置
  *  接受2个参数，
  +  第一个用来把state挂到props上，是一个函数返回对象
- +  第二个用来把action挂到props上，是一个对象
+ +  第二个用来把dispatch挂到props上，是一个对象
  */
 @connect(
   (state) => (state),
