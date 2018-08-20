@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+
 const app = new express();
 const PORT = 9093;
 const DB_url = 'mongodb://127.0.0.1:27017/talk';
@@ -16,7 +17,7 @@ const User = mongoose.model('user', new mongoose.Schema({
 }));
 
 /*创建数据*/
-// User.create({ name: 'cg', age: 18 }, (err, doc) => {
+// User.create({ name: 'ly', age: 18 }, (err, doc) => {
 //   if (err) return console.error(err);
 //   else console.log(doc);
 // });

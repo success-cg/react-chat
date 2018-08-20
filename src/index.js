@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -8,6 +8,9 @@ import App from './App.js';
 import './style/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import './style/App.css';
+import './App.css';
+import './config.js';
+import 'antd-mobile/dist/antd-mobile.css'
 
 import { reducer } from './reducer.js';
 
