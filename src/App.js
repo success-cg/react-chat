@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addGun, removeGun, addGunSync } from './reducer';
 import logo from './logo.svg';
-import './App.css';
+import './style/App.css';
 
 /**
  *  用装饰器的方法写connect函数，需要安装babel-plugin-transform-decorators-legacy，

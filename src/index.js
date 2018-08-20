@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import App from './App.js';
-import './index.css';
+import './style/index.css';
 import registerServiceWorker from './registerServiceWorker';
-import './App.css';
+import './style/App.css';
 
 import { reducer } from './reducer.js';
 
