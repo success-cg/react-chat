@@ -8,8 +8,21 @@ export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: '',
+      pwd: '',
+      repeatPwd: '',
       type: 'genius'
     };
+  }
+
+  handleChange(key, val) {
+    this.setState({
+      [key]: val
+    });
+  }
+
+  handleRegister() {
+    console.log(this.state);
   }
 
   render() {
@@ -19,23 +32,31 @@ export default class Register extends Component {
         <h1>注册页</h1>
         <WingBlank>
           <List>
-            <InputItem>用户名</InputItem>
-            <InputItem>密码</InputItem>
-            <InputItem>确认密码</InputItem>
+            <InputItem onChange={ (val) => {this.handleChange('user', val);} }
+            >用户名</InputItem>
+            <InputItem onChange={ (val) => {this.handleChange('pwd', val);} }
+                       type={ 'password' }
+            >密码</InputItem>
+            <InputItem onChange={ (val) => {this.handleChange('repeatPwd', val);} }
+                       type={ 'password' }
+            >确认密码</InputItem>
           </List>
           <WhiteSpace/>
           <List>
-            <RadioItem checked={ this.state.type === 'genius' }>
-              牛人
+            <RadioItem checked={ this.state.type === 'genius' }
+                       onChange={ () => {this.handleChange('type', 'genius');} }
+            >牛人
             </RadioItem>
-            <RadioItem checked={ this.state.type === 'boss' }>
-              BOSS
+            <RadioItem checked={ this.state.type === 'boss' }
+                       onChange={ () => {this.handleChange('type', 'boss');} }
+            >BOSS
             </RadioItem>
           </List>
           <WhiteSpace/>
-          <Button type={ 'primary' }>注册</Button>
+          <Button type={ 'primary' } onClick={ this.handleRegister.bind(this) }>注册</Button>
         </WingBlank>
       </div>
-    );
+    )
+      ;
   }
 }
