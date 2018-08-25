@@ -27,18 +27,18 @@ export function reducer(state = initState, action) {
   }
 }
 
-export function addGun() {
-  return { type: ADD_GUN, payload: +1 };
+export function addGun(data) {
+  return { type: ADD_GUN, payload: +data };
 }
 
-export function removeGun() {
-  return { type: REMOVE_GUN, payload: -1 };
+export function removeGun(data) {
+  return { type: REMOVE_GUN, payload: -data };
 }
 
-export function addGunSync() {
+export function addGunSync(data) {
   return (dispatch) => {
     setTimeout(() => {
-      dispatch(addGun());
+      dispatch(addGun(data));
     }, 1000);
   };
 }

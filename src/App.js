@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addGun, removeGun, addGunSync, getUser } from './reducer';
-import { Button } from 'antd-mobile'
+import { Button, InputItem, WingBlank, WhiteSpace } from 'antd-mobile'
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,12 +12,45 @@ import './App.css';
  +  第一个用来把state挂到props上，是一个函数返回对象
  +  第二个用来把dispatch挂到props上，是一个对象
  */
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addGun1(data) {
+      dispatch(addGun(data))
+    },
+    removeGun1(data) {
+      dispatch(removeGun(data))
+    },
+    addGunSync1(data) {
+      dispatch(addGunSync(data))
+    },
+    getUser1(data) {
+      dispatch(getUser(data))
+    }
+  }
+}
+
 @connect(
   (state) => (state),
-  { addGun, removeGun, addGunSync, getUser }
+  mapDispatchToProps
 )
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      num: 0
+    }
+  }
+
+  handleChange(e) {
+    console.log(typeof e, e);
+    this.setState({
+      num: +e
+    })
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -34,10 +67,15 @@ class App extends Component {
         <h1 className="App-title">我的名字是 { this.props.name }</h1>
         <h1 className="App-title">我的年龄 { this.props.age }</h1>
 
-        <Button type="primary" inline={ true } onClick={ this.props.addGun }>加一把</Button>
-        <Button type="primary" inline={ true } onClick={ this.props.removeGun }>减一把</Button>
-        <Button type="primary" inline={ true } onClick={ this.props.addGunSync }>明天给一把</Button>
-        <Button type="primary" inline={ true } onClick={ this.props.getUser }>getUser</Button>
+        <WingBlank>
+          <InputItem type={ 'number' } onChange={ this.handleChange.bind(this) }>把数</InputItem>
+        </WingBlank>
+        <WhiteSpace/>
+
+        <Button type="primary" inline={ true } onClick={ () => this.props.addGun1(this.state.num) }>加枪</Button>
+        <Button type="primary" inline={ true } onClick={ () => this.props.removeGun1(this.state.num) }>减枪</Button>
+        <Button type="primary" inline={ true } onClick={ () => this.props.addGunSync1(this.state.num) }>明天加</Button>
+        <Button type="primary" inline={ true } onClick={ this.props.getUser1 }>getUser</Button>
       </div>
     );
   }
